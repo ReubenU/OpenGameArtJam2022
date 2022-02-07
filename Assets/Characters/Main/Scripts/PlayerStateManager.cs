@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -9,13 +10,20 @@ public class PlayerStateManager : MonoBehaviour
     PlayerBoostState _boostState;
     PlayerDeathState _deathState;
 
-    [SerializeField]
-    private float moveSpeed = 3.0f;
+    // Physics
+    public float moveSpeed = 3.0f;
 
-    [SerializeField]
-    private float boostSpeed = 10f;
+    public float boostSpeed = 10f;
 
+    public Rigidbody rigid;
+
+    // Stats
     public float player_health = 100f;
+
+    // Player Controls
+    public PlayerInputActions _playerControls;
+
+    public InputAction moveControl;
 
     void Awake()
     {
@@ -24,9 +32,28 @@ public class PlayerStateManager : MonoBehaviour
         _deathState = new PlayerDeathState(this);
 
         _currentState = _moveState;
+
+
+        _playerControls = new PlayerInputActions();
+
+        moveControl = _playerControls.Player.Move;
+
+        rigid = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void OnEnable()
+    {
+        _playerControls.Enable();
+        moveControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerControls.Disable();
+        moveControl.Disable();
+    }
+
+    void FixedUpdate()
     {
         _currentState.UpdateState();
     }
