@@ -4,8 +4,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    // Player's current state
     PlayerBaseState _currentState;
 
+    // Player's current states
     PlayerMoveState _moveState;
     PlayerBoostState _boostState;
     PlayerDeathState _deathState;

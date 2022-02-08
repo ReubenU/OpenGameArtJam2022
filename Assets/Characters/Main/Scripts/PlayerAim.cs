@@ -4,42 +4,45 @@ using UnityEngine.InputSystem;
 public class PlayerAim : MonoBehaviour
 {
     PlayerInputActions playerControls;
-    InputAction mouseMovement;
+    InputAction mousePosition;
 
+    // Player's input system being initialized
     private void Awake()
     {
         playerControls = new PlayerInputActions();
 
-        mouseMovement = playerControls.Player.MousePosition;
+        mousePosition = playerControls.Player.MousePosition;
     }
 
     private void OnEnable()
     {
         playerControls.Enable();
-        mouseMovement.Enable();
+        mousePosition.Enable();
     }
 
+    // Disable the input system to avoid fuckery.
     private void OnDisable()
     {
         playerControls.Disable();
-        mouseMovement.Disable();
+        mousePosition.Disable();
     }
 
+    // Main update loop.
     private void Update()
     {
         MouseAim();
     }
 
-
-    Vector2 pointer = new Vector2();
-    float angle = 0f;
+    // Player mouse aiming.
+    // The player model aims directly at
+    // the mouse in screen space.
     void MouseAim()
     {
-        pointer = mouseMovement.ReadValue<Vector2>();
+        Vector2 pointer = mousePosition.ReadValue<Vector2>();
 
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
 
-        angle = Mathf.Atan2(pointer.x - screenPos.x, pointer.y - screenPos.y) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(pointer.x - screenPos.x, pointer.y - screenPos.y) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(Vector3.up * angle);
     }
