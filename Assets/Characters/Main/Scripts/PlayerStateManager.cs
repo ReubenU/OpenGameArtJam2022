@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerStateManager : MonoBehaviour
+public class PlayerStateManager : EntityStateManager
 {
     // Player's current state
     PlayerBaseState _currentState;
@@ -11,13 +11,6 @@ public class PlayerStateManager : MonoBehaviour
     PlayerMoveState _moveState;
     PlayerBoostState _boostState;
     PlayerDeathState _deathState;
-
-    // Physics
-    public float moveSpeed = 3.0f;
-
-    public float boostSpeed = 10f;
-
-    public Rigidbody rigid;
 
     // Stats
     public float player_health = 100f;
@@ -40,15 +33,18 @@ public class PlayerStateManager : MonoBehaviour
 
         moveControl = _playerControls.Player.Move;
 
+        // Set rigidbody physics
         rigid = GetComponent<Rigidbody>();
     }
 
+    // Enable input system
     private void OnEnable()
     {
         _playerControls.Enable();
         moveControl.Enable();
     }
 
+    // Disable input system
     private void OnDisable()
     {
         _playerControls.Disable();

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  muzzleVelocity: 10
+  muzzleVelocity: 20
   lifetime: 5
   bulletBody: {fileID: 0}
 --- !u!1001 &975433576364212104

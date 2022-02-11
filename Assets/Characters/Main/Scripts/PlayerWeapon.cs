@@ -3,16 +3,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeapon : Weapon
 {
-    public Projectile ricochetBullet;
-
+    // Our weapon controls are defined here
     PlayerInputActions playerInput;
     InputAction fireWeapon;
+
+    // Define all available projectiles here
+    public Projectile ricochetBullet;
+
 
     void Awake()
     {
         playerInput = new PlayerInputActions();
         fireWeapon = playerInput.Player.Fire;
 
+        // Set a starting weapon. Can be null
         bullet = ricochetBullet;
     }
 
@@ -40,7 +44,7 @@ public class PlayerWeapon : Weapon
     // beam.
     public override void Fire()
     {
-        if (fireWeapon.triggered)
+        if (fireWeapon.triggered && bullet != null)
         {
             Instantiate(bullet.gameObject, gameObject.transform.position, gameObject.transform.rotation);
         }

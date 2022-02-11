@@ -749,6 +749,35 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2330537149107966146, guid: a9c89c08f3650e9438f85c1da3dc59b0, type: 3}
+--- !u!114 &1026278713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026278711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587b6431643749340b702dea5fb3e6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityStateManager: {fileID: 1680925550}
+--- !u!54 &1026278714
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026278711}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1238898575
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,9 +1020,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d552a22ee25a32f4b83d2081595715da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  rigid: {fileID: 0}
   moveSpeed: 7
   boostSpeed: 20
-  rigid: {fileID: 0}
   player_health: 100
   moveControl:
     m_Name: Move Control
@@ -1149,6 +1179,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 000d29c2cae8a744094aa65338472a6b, type: 3}
   m_PrefabInstance: {fileID: 552471688}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1647241187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647241186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587b6431643749340b702dea5fb3e6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityStateManager: {fileID: 1320945678}
+--- !u!54 &1647241188
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647241186}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &1647241189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 000d29c2cae8a744094aa65338472a6b, type: 3}
@@ -1179,6 +1238,7 @@ GameObject:
   - component: {fileID: 1680925548}
   - component: {fileID: 1680925547}
   - component: {fileID: 1680925549}
+  - component: {fileID: 1680925550}
   m_Layer: 8
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -1230,6 +1290,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1680925550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680925546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade5034b21d3ad243b61588099ddb6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  rigid: {fileID: 0}
+  moveSpeed: 5
+  boostSpeed: 5
 --- !u!1 &1838840386
 GameObject:
   m_ObjectHideFlags: 0
