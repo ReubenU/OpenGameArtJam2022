@@ -412,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524917206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2097933966}
@@ -602,6 +602,14 @@ PrefabInstance:
     - target: {fileID: 2500165716777958365, guid: 9b9f6565e79057a408b68487ce267393, type: 3}
       propertyPath: m_Name
       value: TestArena-collision
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500165716777958365, guid: 9b9f6565e79057a408b68487ce267393, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500165716777958365, guid: 9b9f6565e79057a408b68487ce267393, type: 3}
+      propertyPath: m_TagString
+      value: LevelCollision
       objectReference: {fileID: 0}
     - target: {fileID: 3024606772139172199, guid: 9b9f6565e79057a408b68487ce267393, type: 3}
       propertyPath: m_RootOrder
@@ -1306,6 +1314,9 @@ MonoBehaviour:
   rigid: {fileID: 0}
   moveSpeed: 5
   boostSpeed: 5
+  target: {fileID: 1320945676}
+  weaponsAiming: {fileID: 1238898576}
+  followDistance: 5
 --- !u!1 &1838840386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,6 +1630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1974343406}
+  - component: {fileID: 1974343407}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -1634,12 +1646,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974343405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1238898576}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974343407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974343405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d34a8dd2374f9469668595d729a918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 4192071148125809647, guid: 055b29547a3c1f14fa68dffef4afa7f5, type: 3}
+  playerTransform: {fileID: 1320945676}
+  shootCadence: 0.5
+  sightFieldAngle: 15
+  maxDistance: 10
 --- !u!1 &2029350948
 GameObject:
   m_ObjectHideFlags: 0

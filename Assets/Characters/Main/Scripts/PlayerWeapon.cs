@@ -10,6 +10,8 @@ public class PlayerWeapon : Weapon
     // Define all available projectiles here
     public Projectile ricochetBullet;
 
+    public float maxBulletLife = 3f;
+
 
     void Awake()
     {
@@ -46,7 +48,9 @@ public class PlayerWeapon : Weapon
     {
         if (fireWeapon.triggered && bullet != null)
         {
-            Instantiate(bullet.gameObject, gameObject.transform.position, gameObject.transform.rotation);
+            GameObject newBullet = Instantiate(bullet.gameObject, gameObject.transform.position, gameObject.transform.rotation);
+
+            Destroy(newBullet, maxBulletLife);
         }
     }
 

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975433574679423097}
-  - component: {fileID: 975433574679423098}
   - component: {fileID: 975433574679423099}
   - component: {fileID: 4192071148125809647}
+  - component: {fileID: 1822022110824698355}
   m_Layer: 6
   m_Name: RicochetBolt
   m_TagString: Projectile
@@ -34,19 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &975433574679423098
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975433574679423100}
-  m_Material: {fileID: 13400000, guid: 97064a447fb10a64caf5934e53af0322, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.04
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &975433574679423099
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62,7 +49,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &4192071148125809647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,9 +63,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  muzzleVelocity: 20
+  muzzleVelocity: 10
   lifetime: 5
   bulletBody: {fileID: 0}
+  debugPoint: {fileID: 4775360327057307483, guid: 207ea85a478aa904c88ec031953077fc, type: 3}
+--- !u!136 &1822022110824698355
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975433574679423100}
+  m_Material: {fileID: 13400000, guid: 97064a447fb10a64caf5934e53af0322, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.045
+  m_Height: 0.3
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.09}
 --- !u!1001 &975433576364212104
 PrefabInstance:
   m_ObjectHideFlags: 0
