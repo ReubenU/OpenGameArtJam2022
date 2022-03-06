@@ -9,9 +9,17 @@ public class PlayerWeapon : Weapon
 
     // Define all available projectiles here
     public Projectile ricochetBullet;
+    public Projectile bouncyBomb;
+
+    public Projectile[] bullets;
 
     public float maxBulletLife = 3f;
 
+
+    private bool isFiring = false;
+
+    public float rateOfFire = 0.167f;
+    private float fireRateAccum;
 
     void Awake()
     {
@@ -20,6 +28,13 @@ public class PlayerWeapon : Weapon
 
         // Set a starting weapon. Can be null
         bullet = ricochetBullet;
+
+        bullets = new Projectile[2] { ricochetBullet, bouncyBomb };
+
+        fireWeapon.started += StartFiring;
+        fireWeapon.canceled += StopFiring;
+
+        fireRateAccum = rateOfFire;
     }
 
     private void OnEnable()
@@ -36,7 +51,16 @@ public class PlayerWeapon : Weapon
 
     private void Update()
     {
-        Fire();
+        if (isFiring)
+        {
+            if (fireRateAccum > rateOfFire)
+            {
+                Fire();
+                fireRateAccum = 0f;
+            }
+
+            fireRateAccum += Time.deltaTime;
+        }
     }
 
     // When firing the player's weapon, the weapon game object
@@ -46,13 +70,26 @@ public class PlayerWeapon : Weapon
     // beam.
     public override void Fire()
     {
-        if (fireWeapon.triggered && bullet != null)
+        if (bullet != null)
         {
             GameObject newBullet = Instantiate(bullet.gameObject, gameObject.transform.position, gameObject.transform.rotation);
 
             Destroy(newBullet, maxBulletLife);
         }
     }
+
+
+    private void StartFiring(InputAction.CallbackContext context)
+    {
+        isFiring = true;
+    }
+
+    private void StopFiring(InputAction.CallbackContext context)
+    {
+        isFiring = false;
+        fireRateAccum = rateOfFire;
+    }
+
 
     // Switch weapon to other arsenal.
     public void SwitchWeapon(Projectile otherWeapon)

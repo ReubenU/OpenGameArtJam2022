@@ -12,6 +12,9 @@ public class PlayerStateManager : EntityStateManager
     PlayerBoostState _boostState;
     PlayerDeathState _deathState;
 
+    // Player controller parts
+    public Transform aimingBody;
+
     // Stats
     public float player_health = 100f;
 

@@ -432,6 +432,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 0}
   ricochetBullet: {fileID: 4192071148125809647, guid: 055b29547a3c1f14fa68dffef4afa7f5, type: 3}
+  bouncyBomb: {fileID: 0}
+  bullets: []
+  maxBulletLife: 3
+  rateOfFire: 0.167
 --- !u!1001 &552471688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1030,8 +1034,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   rigid: {fileID: 0}
-  moveSpeed: 7
+  moveSpeed: 10
   boostSpeed: 20
+  aimingBody: {fileID: 0}
   player_health: 100
   moveControl:
     m_Name: Move Control
@@ -1646,7 +1651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974343405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1238898576}
@@ -1669,6 +1674,7 @@ MonoBehaviour:
   shootCadence: 0.5
   sightFieldAngle: 15
   maxDistance: 10
+  maxBulletLife: 3
 --- !u!1 &2029350948
 GameObject:
   m_ObjectHideFlags: 0

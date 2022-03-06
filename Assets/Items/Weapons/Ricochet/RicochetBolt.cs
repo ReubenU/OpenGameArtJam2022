@@ -28,7 +28,8 @@ public class RicochetBolt : Projectile
                 Vector3 reflect = Vector3.Reflect(transform.TransformDirection(Vector3.forward), contactNormal);
 
 
-                transform.Translate(reflect * 0.1f, Space.World);
+                //transform.Translate(reflect * 0.1f, Space.World);
+                transform.position = contactPoint + (reflect.normalized * 0.5f);
                 transform.LookAt(contactPoint + reflect, Vector3.up);
             }
         }

@@ -5,7 +5,7 @@ public class ShootAtPlayer : Weapon
 {
     public Transform playerTransform;
 
-    public float shootCadence = 3f; // In seconds
+    public float shootCadence = 0.5f; // In seconds
     private float cadenceCount = 0;
 
     public float sightFieldAngle = 15f; // in degrees
@@ -16,13 +16,7 @@ public class ShootAtPlayer : Weapon
     // Update is called once per frame
     void Update()
     {
-        if (cadenceCount >= shootCadence)
-        {
-            Fire();
-            cadenceCount = 0;
-        }
-
-        cadenceCount += Time.deltaTime;
+        Fire();
     }
 
     public override void Fire()
@@ -33,9 +27,16 @@ public class ShootAtPlayer : Weapon
 
         if (angle <= sightFieldAngle && lookDirection.magnitude <= maxDistance)
         {
-            GameObject newBullet = Instantiate(bullet.gameObject, transform.position, transform.rotation);
+            if (cadenceCount > shootCadence)
+            {
+                GameObject newBullet = Instantiate(bullet.gameObject, transform.position, transform.rotation);
 
-            Destroy(newBullet, maxBulletLife);
+                Destroy(newBullet, maxBulletLife);
+
+                cadenceCount = 0;
+            }
+
+            cadenceCount += Time.deltaTime;
         }
     }
 }
